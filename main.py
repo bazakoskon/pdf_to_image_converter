@@ -5,7 +5,6 @@ import tempfile
 poppler_path = r"Release-22.12.0-0/poppler-22.12.0/Library/bin"
 output_folder = r"output_files"
 
-
 for subdir, dirs, files in os.walk('pdf_files'):
     # print(subdir, dirs, files)
     if files:
@@ -22,7 +21,8 @@ for subdir, dirs, files in os.walk('pdf_files'):
                                                          "quality": 100,
                                                          "progressive": False,
                                                          "optimize": False
-                                                     }
+                                                     },
+                                                     output_folder=path
                                                      )
                 if not os.path.exists(f'{output_folder}/{file}'):
                     os.makedirs(f'{output_folder}/{file}'[:-4])
