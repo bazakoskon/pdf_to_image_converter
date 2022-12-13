@@ -27,6 +27,9 @@ for subdir, dirs, files in os.walk('pdf_files'):
                 if not os.path.exists(f'{output_folder}/{file}'):
                     os.makedirs(f'{output_folder}/{file}'[:-4])
                     for index, page in enumerate(images_from_path):
+                        if page.width > page.height:
+                            page = page.rotate(90)
+                            print(f'{subdir}/{file}')
                         page.save(os.path.join(f'{output_folder}/{file}'[:-4], f"{index}.jpg"), "JPEG", dpi=(300, 300))
 
 # https://github.com/Belval/pdf2image
